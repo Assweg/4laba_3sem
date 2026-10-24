@@ -1,25 +1,36 @@
-# 4laba_3sem — Параллелизм и алгоритмы ОС
+# Потоки, синхронизация и алгоритм банкира
 
-Лабораторная №4, 3 семестр. Три программы: примитивы синхронизации, многопоточная обработка, алгоритм банкира.
+![Стек](https://img.shields.io/badge/C%2B%2B20%20%C2%B7%20Threads-334155?style=flat-square) ![Семестр](https://img.shields.io/badge/семестр-3-0f766e?style=flat-square) ![Статус](https://img.shields.io/badge/статус-%D0%A3%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82-64748b?style=flat-square)
 
-## Что внутри
-- `main1.cpp` — mutex / semaphore / barrier / atomic, 3 потока × 100k итераций, замер времени
-- `main2.cpp` — одно- vs многопоточная обработка товаров (regex по коду, `quantity*price`)
-- `main3.cpp` — алгоритм банкира (класс `bankers`, матрицы al/m/n, поиск безопасной последовательности)
-- `compilation` — заметки по сборке
+Лабораторная №4: сравнение механизмов синхронизации, параллельная обработка данных и поиск безопасной последовательности выделения ресурсов.
 
-## Стек
-C++20 (`<thread>`, `<semaphore>`, `<barrier>`, `<atomic>`)
+## Программы
 
-## Запуск
+| Файл | Задача |
+|---|---|
+| [main1.cpp](main1.cpp) | Мьютекс, семафор, барьер, атомарные операции и замеры времени |
+| [main2.cpp](main2.cpp) | Последовательная и многопоточная обработка товаров с регулярными выражениями |
+| [main3.cpp](main3.cpp) | Алгоритм банкира: ресурсы, потребности и безопасная последовательность |
+
+## Сборка и запуск
+
+Нужен компилятор и стандартная библиотека с поддержкой C++20, включая `<semaphore>` и `<barrier>`.
+
 ```bash
-g++ main1.cpp -o main1 -pthread && ./main1
-g++ main2.cpp -o main2 -pthread && ./main2
-g++ main3.cpp -o main3 && ./main3
+c++ -std=c++20 -pthread main1.cpp -o synchronization
+./synchronization
+
+c++ -std=c++20 -pthread main2.cpp -o parallel_processing
+./parallel_processing
+
+c++ -std=c++20 main3.cpp -o banker
+./banker
 ```
 
-## Что изучено
-Потоки, синхронизация, оценка ускорения, классика ОС — алгоритм банкира.
+## Материалы
+
+Исходные заметки по сборке: [compilation](compilation). Отчёт находится в [архиве лабораторной](https://github.com/Assweg/nstu/tree/main/3sem/Laba4).
 
 ---
-**Автор:** Assweg · Telegram: [@assweg](https://t.me/assweg) · Учебное портфолио, все работы — студенческие.
+
+[Все учебные работы](https://github.com/Assweg/nstu) · [Профиль Assweg](https://github.com/Assweg)
